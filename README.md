@@ -1,4 +1,4 @@
-# documentation-management-sidecar
+# Documentation Management Sidecar
 
 All operations required for the Documentation Management center to operate efficiently and correctly.
 
