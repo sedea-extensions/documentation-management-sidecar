@@ -1,0 +1,35 @@
+---
+description: >-
+  Extension MCP contribution manifest — schema, transports, and install-time registration boundaries.
+globs: "**/*"
+alwaysApply: false
+---
+
+# Extension MCP contribution
+
+## Manifest files
+
+| File | Role |
+|------|------|
+| `sedea.mcp-contribution.schema.json` | JSON Schema (v0.1) for contribution shape |
+| `sedea.mcp-contribution.example.json` | Starter example — copy to `sedea.mcp-contribution.json` when ready |
+| `sedea.mcp-contribution.json` | Authoritative manifest for this extension (create when servers are defined) |
+
+## Required shape (floor)
+
+Top-level **required** keys: `extensionId`, `version`, `servers`.
+
+Each server entry must declare **`transport`**: `stdio` or `sse` per the schema enum.
+
+## Runtime registration boundary
+
+| Phase | MCP registration |
+|-------|------------------|
+| **Develop / scaffold** | Manifest authoring only — no Mission Control aggregator write |
+| **Install on packaged Sedea** | **Install Sedea Extension** mission writes `extensionContributions` |
+
+**Forbidden:** using **sedea-mcp-hub** as the extension-native MCP registry. Hub is for external REST/API bridges only.
+
+## Sedea MCP Hub appendix
+
+External API bridges belong in **sedea-mcp-hub** — not in this extension's stdio/SSE contribution manifest. See `AGENTS.md` in this repo for the platform split.

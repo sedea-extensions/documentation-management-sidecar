@@ -1,0 +1,41 @@
+---
+description: >-
+  Sedea user extension project — compile, test, Extension Development Host smoke,
+  and delivery boundaries for documentation-management-sidecar.
+globs: "**/*"
+alwaysApply: true
+---
+
+# Sedea user extension project
+
+This repository is a **user bespoke Sedea extension** materialized from [`sedea-extensions/extension-template`](https://github.com/sedea-extensions/extension-template). It is **not** part of the Sedea application monorepo (`sedea-ai/app/extensions/` shipped natives).
+
+## Verify before ship
+
+Run the template verify chain from the repo root:
+
+```bash
+npm run verify
+```
+
+The script runs lint → typecheck → compile → test. Fix failures before opening a PR.
+
+## Extension Development Host (EDH)
+
+Develop and smoke-test in Sedea's Extension Development Host using this repo as the extension root. Do **not** treat the Sedea app monorepo `extensions/` tree as the destination for feature work in this project.
+
+## MCP contribution manifest
+
+Author `sedea.mcp-contribution.json` using `sedea.mcp-contribution.schema.json` and `sedea.mcp-contribution.example.json` in this repo. **Scaffold does not register runtime MCP** — the **Install Sedea Extension** mission registers contributions on packaged Sedea after VSIX ship.
+
+See [`sedea-mcp-contribution.mdc`](./sedea-mcp-contribution.mdc) for manifest shape and install-time boundaries.
+
+## Post-scaffold feature delivery
+
+After scaffold, use **Software Development `plan and deliver`** in **this user extension repo** for feature work and VSIX ship. Do **not** use **Scaffold New Sedea Extension** as the primary entry for ongoing feature implementation.
+
+## Template maintenance
+
+When platform conventions drift, run sedea center mission **`maintain extension template`** on the hosting stack — not ad-hoc edits to the canonical template without that mission.
+
+Extension slug: `documentation-management-sidecar`
